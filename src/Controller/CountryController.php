@@ -38,14 +38,23 @@ class CountryController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('App:Country')
             ->findAll();
-        dump($countries);die;
+
+        return $this->render('countries/list.html.twig', [
+            'countries' => $countries,
+        ]);
     }
 
     /**
-     * @Route("/countries/{countryName}")
+     * @Route("/countries/{countryName}", name="country_show")
      */
     public function showAction($countryName)
     {
-        return new Response('Under the sea!');
+        $em = $this->getDoctrine()->getManager();
+        $country = $em->getRepository('App:Country')
+            ->findOneBy(['name' => $countryName]);
+
+        return $this->render('countries/show.html.twig', [
+            'country' => $country
+        ]);
     }
 }
