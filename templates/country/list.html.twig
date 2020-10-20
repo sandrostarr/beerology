@@ -29,7 +29,7 @@
                         <a href="{{ path('country_show', {
                             'countryName': country.name
                         }) }}">
-                            <div class="content_countries_item content_countries_item_1">
+                            <div class="content_countries_item content_countries_item_{{ random(1, 20) }}">
                                 <div class="content_countries_item_img"></div>
                                 <div class="content_countries_item_country">{{ country.name }}</div>
                             </div>
