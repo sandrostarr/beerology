@@ -3,10 +3,115 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome, Beerology!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
+            <link rel="shortcut icon" href="../icons/favicon/light/favicon-16x16.png" type="image/png">
+        {% endblock %}
     </head>
     <body>
+        {% block header %}
+            <header>
+                <div class="header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-sm-5 col-4">
+                                <!-- <a href="#" class="header_logo"><img src="img/instagram.png" alt="logo"></a> -->
+                                <a href="../" class="header_logo">
+                                    <img src="../img/logo.png" alt="logo">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 offset-lg-1 col-md-5 offset-md-0 col-sm-1 col-1">
+                                <nav>
+                                    <ul class="menu">
+                                        <li class="menu_item"><a href="../styles/" class="menu_link">Виды пива</a></li>
+                                        <li class="menu_item"><a href="../countries/" class="menu_link menu_link_active">Страны</a></li>
+                                        <li class="menu_item"><a href="../news/" class="menu_link">Новости</a></li>
+                                        <li class="menu_item"><a href="../blog/" class="menu_link">Блог</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-lg-3 offset-lg-1 col-md-3 offset-md-0 col-sm-5 col-12">
+                                <input class="header_search" type="text">
+                                <img class="header_search_icon" src="../icons/search logo.png" alt="search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="subheader">
+                    <div class="container">
+                        <div class="row">
+                            <div class="subheader_geoposition col-lg-2 col-md-3 col-sm-3">
+                                <img class="subheader_geoposition_icon" src="../icons/geoposition icon.png" alt="geoposition">
+                                <a href="#" class="subheader_geoposition_city">Новосибирск</a>
+                            </div>
+                            <div class="subheader_subscribe col-lg-3 offset-lg-5 col-md-4 offset-md-2 col-sm-4">
+                                <a href="#" data-modal="subscribe" class="subheader_subscribe_link">Подписаться на рассылку</a>
+                            </div>
+                            <div class="subheader_socials col-lg-2 col-md-3 col-sm-5">
+                                <ul class="subheader_socials_list">
+                                    <li class="subheader_socials_item">
+                                        <a href="#">
+                                            <svg class="subheader_social_icon socials fb" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 10h-2v2h2v6h3v-6h1.82l.18-2h-2v-.833c0-.478.096-.667.558-.667h1.442v-2.5h-2.404c-1.798 0-2.596.792-2.596 2.308v1.692z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="subheader_socials_item">
+                                        <a href="#">
+                                            <svg class="subheader_social_icon socials ig" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.615 6h-9.23c-.766 0-1.385.62-1.385 1.384v9.23c0 .766.619 1.386 1.385 1.386h9.23c.766 0 1.385-.62 1.385-1.385v-9.23c0-.765-.619-1.385-1.385-1.385zm-4.615 3.693c1.274 0 2.309 1.032 2.309 2.307s-1.035 2.307-2.309 2.307-2.307-1.033-2.307-2.307 1.033-2.307 2.307-2.307zm4.5 6.346c0 .255-.207.461-.461.461h-8.078c-.254 0-.461-.207-.461-.461v-5.039h.949c-.045.158-.078.32-.102.486-.023.168-.038.339-.038.514 0 2.04 1.652 3.693 3.691 3.693s3.691-1.653 3.691-3.693c0-.174-.015-.346-.039-.514-.023-.166-.058-.328-.102-.486h.95v5.039zm0-6.991c0 .255-.207.462-.461.462h-1.088c-.256 0-.461-.208-.461-.462v-1.087c0-.255.205-.461.461-.461h1.088c.254 0 .461.207.461.461v1.087z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="subheader_socials_item">
+                                        <a href="#">
+                                            <svg class="subheader_social_icon socials tw" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.5 8.778c-.441.196-.916.328-1.414.388.509-.305.898-.787 1.083-1.362-.476.282-1.003.487-1.564.597-.448-.479-1.089-.778-1.796-.778-1.59 0-2.758 1.483-2.399 3.023-2.045-.103-3.86-1.083-5.074-2.572-.645 1.106-.334 2.554.762 3.287-.403-.013-.782-.124-1.114-.308-.027 1.14.791 2.207 1.975 2.445-.346.094-.726.116-1.112.042.313.978 1.224 1.689 2.3 1.709-1.037.812-2.34 1.175-3.647 1.021 1.09.699 2.383 1.106 3.773 1.106 4.572 0 7.154-3.861 6.998-7.324.482-.346.899-.78 1.229-1.274z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="subheader_socials_item">
+                                        <a href="#">
+                                            <svg class="subheader_social_icon socials vk" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.581 15.997c.304 0 .429-.204.425-.458-.016-.958.356-1.474 1.03-.802.744.744.896 1.26 1.801 1.26h1.601c.403 0 .562-.13.562-.334 0-.432-.711-1.194-1.312-1.752-.844-.783-.882-.802-.156-1.744.9-1.169 2.079-2.667 1.037-2.667h-1.991c-.387 0-.414.217-.551.542-.498 1.173-1.443 2.693-1.803 2.461-.377-.243-.204-1.203-.175-2.63.008-.377.006-.636-.571-.77-.314-.073-.621-.103-.903-.103-1.137 0-1.922.477-1.477.56.785.146.711 1.846.527 2.58-.319 1.278-1.518-1.012-2.018-2.152-.12-.275-.155-.488-.586-.488h-1.627c-.247 0-.394.08-.394.258 0 .301 1.479 3.36 2.892 4.885 1.379 1.487 2.742 1.354 3.689 1.354z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="subheader_socials_item">
+                                        <a href="#">
+                                            <svg class="subheader_social_icon socials yt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M16.23 7.102c-2.002-.136-6.462-.135-8.461 0-2.165.148-2.419 1.456-2.436 4.898.017 3.436.27 4.75 2.437 4.898 1.999.135 6.459.136 8.461 0 2.165-.148 2.42-1.457 2.437-4.898-.018-3.436-.271-4.75-2.438-4.898zm-6.23 7.12v-4.444l4.778 2.218-4.778 2.226zm2-12.222c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header_breadcrumbs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="header_breadcrumbs_links col-12">
+                                <a href="../" class="header_breadcrumbs_main">главная</a> / <a href="#" class="header_breadcrumbs_1">страны</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        {% endblock %}
+
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

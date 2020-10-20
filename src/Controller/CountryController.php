@@ -40,7 +40,7 @@ class CountryController extends AbstractController
             ->findAll();
 
         return $this->render('country/list.html.twig', [
-            'country' => $countries,
+            'countries' => $countries,
         ]);
     }
 
