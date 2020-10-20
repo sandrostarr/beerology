@@ -53,8 +53,14 @@ class CountryController extends AbstractController
         $country = $em->getRepository('App:Country')
             ->findOneBy(['name' => $countryName]);
 
+        if(!$country) {
+            throw $this->createNotFoundException('No country found!');
+        }
+
         return $this->render('countries/show.html.twig', [
             'country' => $country
         ]);
+
+
     }
 }

@@ -1,14 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} Country {{ country.name }} {% endblock %}
+
 {% block body %}
 
-    <ul>
-        {% for country in countries %}
-            <li><a href="{{ path('country_show', {
-                    'countryName': country.name
-                }) }}">{{ country.name }}</a></li>
-
-        {% endfor %}
-    </ul>
+    <h2>{{ country.name }}</h2>
+    <h3>{{ country.content }}</h3>
+    <h3>{{ country.image }}</h3>
 
 {% endblock %}
