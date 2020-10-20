@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CountryController extends AbstractController
 {
     /**
-     * @Route("/countries/new")
+     * @Route("/country/new")
      */
     public function newAction()
     {
@@ -31,7 +31,7 @@ class CountryController extends AbstractController
     }
 
     /**
-     * @Route("/countries")
+     * @Route("/country")
      */
     public function listAction()
     {
@@ -39,13 +39,13 @@ class CountryController extends AbstractController
         $countries = $em->getRepository('App:Country')
             ->findAll();
 
-        return $this->render('countries/list.html.twig', [
-            'countries' => $countries,
+        return $this->render('country/list.html.twig', [
+            'country' => $countries,
         ]);
     }
 
     /**
-     * @Route("/countries/{countryName}", name="country_show")
+     * @Route("/country/{countryName}", name="country_show")
      */
     public function showAction($countryName)
     {
@@ -57,7 +57,7 @@ class CountryController extends AbstractController
             throw $this->createNotFoundException('No country found!');
         }
 
-        return $this->render('countries/show.html.twig', [
+        return $this->render('country/show.html.twig', [
             'country' => $country
         ]);
 
