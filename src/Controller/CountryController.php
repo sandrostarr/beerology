@@ -45,13 +45,14 @@ class CountryController extends AbstractController
     }
 
     /**
-     * @Route("/country/{countryName}", name="country_show")
+     * @Route("/country/{name}", name="country_show")
      */
-    public function showAction($countryName)
+    public function showAction(Country $country)
     {
+        dump($country);
         $em = $this->getDoctrine()->getManager();
         $country = $em->getRepository('App:Country')
-            ->findOneBy(['name' => $countryName]);
+            ->findOneBy(['name' => $country->getName()]);
 
         if(!$country) {
             throw $this->createNotFoundException('No country found!');

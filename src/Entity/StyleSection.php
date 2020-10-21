@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,6 +24,16 @@ class styleSection
      * @ORM\Column(type="string")
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Style", mappedBy="style_section")
+     */
+    private $styles;
+
+    public function __construct()
+    {
+        $this->styles = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -46,6 +57,14 @@ class styleSection
     public function setName($name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStyles(): ArrayCollection
+    {
+        return $this->styles;
     }
 
 }

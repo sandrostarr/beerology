@@ -30,9 +30,10 @@ class Style
     private $content;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="StyleSection", inversedBy="styles")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $style_section_id;
+    private $style_section;
 
     /**
      * @return mixed
@@ -77,18 +78,16 @@ class Style
     /**
      * @return mixed
      */
-    public function getStyleSectionId()
+    public function getStyleSection()
     {
-        return $this->style_section_id;
+        return $this->style_section;
     }
 
     /**
-     * @param mixed $style_section_id
+     * @param mixed $style_section
      */
-    public function setStyleSectionId($style_section_id): void
+    public function setStyleSection(StyleSection $style_section): void
     {
-        $this->style_section_id = $style_section_id;
+        $this->style_section = $style_section;
     }
-
-
 }
