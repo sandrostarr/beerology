@@ -3,3 +3,13 @@ App\Entity\Country:
     name: <country()>
     content: <realText(200)>
     image: <url()>
+
+App\Entity\Style:
+  style_{1..30}:
+    name: <text(20)>
+    content: <realText(200)>
+    style_section_id: <randomDigit(10)>
+
+App\Entity\StyleSection:
+  style_{1..10}:
+    name: <text(15)>
