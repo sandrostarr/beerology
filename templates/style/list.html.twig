@@ -27,9 +27,9 @@
                 <aside class="sidebar">
                     <ul class="sidebar_list">
 
-                        {% for style in styles %}
+                        {% for styleSection in styleSections %}
 
-                        <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ style.name }}</a></li>
+                        <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ styleSection.name }}</a></li>
 
                         {% endfor %}
 
@@ -38,33 +38,25 @@
             </div>
             <div class="col-md-9 col-sm-12 content">
 
-                {% for style in styles %}
+                {% for styleSection in styleSections %}
 
                     <div class="content_item" id="item_15">
-                        <h3>{{ style.name }}</h3>
+                        <h3>{{ styleSection.name }}</h3>
+
                         <div class="row">
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Бреттовое пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Кислое пиво смешанного брожения</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Особое дикое пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Фруктовое пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Пиво с фруктами и пряностями</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Особое фруктовое пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Пиво с пряностями, травами, овощами</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Осеннее сезонное пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Зимнее сезонное пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Пиво с альтернативным зерном</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Пиво с альтернативными сахарами</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Классическое копченое пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Особое копченое пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Выдержанное в дереве пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Особое выдержанное в дереве пиво</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Пампасный золотой эль</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Аргентинский IPA</a></div>
-                            <div class="col-12 col-sm-6 content_item_style"><a href="#">Итальянский виноградный эль</a></div>
+
+                            {% for style in styleSection.getStyles() %}
+
+
+                                <div class="col-12 col-sm-6 content_item_style"><a href="#">{{ style.name }}</a></div>
+
+                            {% endfor %}
+
                         </div>
                     </div>
 
                 {% endfor %}
+
             </div>
         </div>
     </div>

@@ -11,5 +11,5 @@ App\Entity\Style:
     style_section_id: <randomDigit(10)>
 
 App\Entity\StyleSection:
-  style_{1..10}:
-    name: <text(15)>
+  styleSection_{1..15}:
+    name: <text(20)>

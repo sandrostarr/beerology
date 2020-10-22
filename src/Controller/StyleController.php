@@ -26,9 +26,12 @@ class StyleController extends  AbstractController
         $em = $this->getDoctrine()->getManager();
         $style_sections = $em->getRepository('App:StyleSection')
             ->findAll();
+        $styles = $em->getRepository('App:Style')
+            ->findAll();
 
         return $this->render('style/list.html.twig', [
-            'styles' => $style_sections,
+            'styleSections' => $style_sections,
+            'styles' => $styles,
         ]);
     }
 }
