@@ -49,7 +49,6 @@ class CountryController extends AbstractController
      */
     public function showAction(Country $country)
     {
-        dump($country);
         $em = $this->getDoctrine()->getManager();
         $country = $em->getRepository('App:Country')
             ->findOneBy(['name' => $country->getName()]);

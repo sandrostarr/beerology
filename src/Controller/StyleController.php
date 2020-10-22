@@ -34,4 +34,24 @@ class StyleController extends  AbstractController
             'styles' => $styles,
         ]);
     }
+
+    /**
+     * @Route("/style/{name}", name="style_show")
+     */
+    public function showAction(Style $style)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $style = $em->getRepository('App:Style')
+            ->findOneBy(['name' => $style->getName()]);
+
+        if(!$style) {
+            throw $this->createNotFoundException('No style found!');
+        }
+
+        return $this->render('style/show.html.twig', [
+            'style' => $style
+        ]);
+
+
+    }
 }
