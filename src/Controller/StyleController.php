@@ -43,13 +43,16 @@ class StyleController extends  AbstractController
         $em = $this->getDoctrine()->getManager();
         $style = $em->getRepository('App:Style')
             ->findOneBy(['name' => $style->getName()]);
+        $style_section = $style->getStyleSection();
+
 
         if(!$style) {
             throw $this->createNotFoundException('No style found!');
         }
 
         return $this->render('style/show.html.twig', [
-            'style' => $style
+            'style' => $style,
+            'styleSection' => $style_section
         ]);
 
 
