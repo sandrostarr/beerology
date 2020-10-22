@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201021054424 extends AbstractMigration
+final class Version20201022073540 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,12 +20,14 @@ final class Version20201021054424 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE style CHANGE style_section_id style_section_id INT NOT NULL');
+        $this->addSql('ALTER TABLE style ADD CONSTRAINT FK_33BDB86A265B6527 FOREIGN KEY (style_section_id) REFERENCES style_section (id)');
+        $this->addSql('CREATE INDEX IDX_33BDB86A265B6527 ON style (style_section_id)');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE style CHANGE style_section_id style_section_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE style DROP FOREIGN KEY FK_33BDB86A265B6527');
+        $this->addSql('DROP INDEX IDX_33BDB86A265B6527 ON style');
     }
 }

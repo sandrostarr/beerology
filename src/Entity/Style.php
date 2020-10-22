@@ -86,7 +86,7 @@ class Style
     /**
      * @param mixed $style_section
      */
-    public function setStyleSection(StyleSection $style_section): void
+    public function setStyleSection(StyleSection $style_section)
     {
         $this->style_section = $style_section;
     }

@@ -4,12 +4,12 @@ App\Entity\Country:
     content: <realText(200)>
     image: <url()>
 
+App\Entity\StyleSection:
+  style.section_{1..10}:
+    name: <text(15)>
+
 App\Entity\Style:
-  style_{1..30}:
+  style_{1..70}:
     name: <text(20)>
     content: <realText(200)>
-    style_section_id: <randomDigit(10)>
-
-App\Entity\StyleSection:
-  styleSection_{1..15}:
-    name: <text(20)>
+    style_section: '@style.section_*'

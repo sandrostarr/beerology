@@ -62,7 +62,7 @@ class StyleSection
     /**
      * @return ArrayCollection
      */
-    public function getStyles(): ArrayCollection
+    public function getStyles()
     {
         return $this->styles;
     }
