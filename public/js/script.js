@@ -98,22 +98,39 @@ $(document).ready(function(){
       });
 
 
-    for (let i = 1; i <= 3; i++) { 
-        var rate = document.getElementById("author_rate_" + i).innerHTML;
-        var line = document.getElementById("author_rate_bar_" + i);
-        line.style.width = rate * 10 + '%';
-    }
+    // Выделение активного пункта в навигационном меню
+    $(function() {
+        let loc_path = location.pathname.split("/")[1];
+        if(loc_path) {
+            $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('menu_link_active');
+        }
+    });
 
-    var finalRate = document.getElementById("author_rate_4").innerHTML;
-    var toplineRate = document.getElementById("author_rate_bar_4");
-    var contentRate = document.getElementById("content_item_topline_rate");
-    var multiply = finalRate * 40;
-    if (finalRate < 5) {
-        toplineRate.style.backgroundColor = 'rgba(200,' + multiply + ',0,1)';
-        contentRate.style.borderColor = 'rgba(200,' + multiply + ',0,1)';
-    }
-    else {
-        toplineRate.style.backgroundColor = 'rgba(' + (200 - (multiply-200)) + ',200,0,1)';
-        contentRate.style.borderColor = 'rgba(' + (200 - (multiply-200)) + ',200,0,1)';
-    } 
+    // Выделение активного пункта в навигации разделов
+    $(function() {
+        let loc_path = location.pathname;
+        if(loc_path) {
+            $('.sidebar_list a[href^="' + location.pathname + '"]').addClass('sidebar_item_link_active');
+        }
+    });
+
+
+    // for (let i = 1; i <= 3; i++) {
+    //     var rate = document.getElementById("author_rate_" + i).innerHTML;
+    //     var line = document.getElementById("author_rate_bar_" + i);
+    //     line.style.width = rate * 10 + '%';
+    // }
+    //
+    // var finalRate = document.getElementById("author_rate_4").innerHTML;
+    // var toplineRate = document.getElementById("author_rate_bar_4");
+    // var contentRate = document.getElementById("content_item_topline_rate");
+    // var multiply = finalRate * 40;
+    // if (finalRate < 5) {
+    //     toplineRate.style.backgroundColor = 'rgba(200,' + multiply + ',0,1)';
+    //     contentRate.style.borderColor = 'rgba(200,' + multiply + ',0,1)';
+    // }
+    // else {
+    //     toplineRate.style.backgroundColor = 'rgba(' + (200 - (multiply-200)) + ',200,0,1)';
+    //     contentRate.style.borderColor = 'rgba(' + (200 - (multiply-200)) + ',200,0,1)';
+    // }
 });

@@ -29,7 +29,7 @@
                                 <nav>
                                     <ul class="menu">
                                         <li class="menu_item"><a href="{{ asset('style/') }}" class="menu_link">Виды пива</a></li>
-                                        <li class="menu_item"><a href="{{ asset('country/') }}" class="menu_link menu_link_active">Страны</a></li>
+                                        <li class="menu_item"><a href="{{ asset('country/') }}" class="menu_link">Страны</a></li>
                                         <li class="menu_item"><a href="{{ asset('news/') }}" class="menu_link">Новости</a></li>
                                         <li class="menu_item"><a href="{{ asset('blog/') }}" class="menu_link">Блог</a></li>
                                     </ul>
@@ -208,10 +208,12 @@
         {% endblock %}
 
         {% block javascripts %}
+
             <script type="text/javascript" src="{{ asset('//code.jquery.com/jquery-1.11.0.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('//code.jquery.com/jquery-migrate-1.2.1.min.js') }}"></script>
             <script src="{{ asset('js/slick.min.js') }}"></script>
             <script src="{{ asset('js/script.js') }}"></script>
+
         {% endblock %}
     </body>
 </html>
