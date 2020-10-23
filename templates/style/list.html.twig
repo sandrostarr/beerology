@@ -1,5 +1,11 @@
  {% extends 'base.html.twig' %}
 
+{% block breadcrumb %}
+
+    {{ parent() }} / <a href="{{ asset('/style') }}" class="header_breadcrumbs_1">стили</a>
+
+{% endblock %}
+
  {% block body %}
 
 <section class="page">
@@ -27,7 +33,7 @@
 
                         {% for styleSection in styleSections %}
 
-                        <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ styleSection.name }}</a></li>
+                        <li class="sidebar_item"><a href="#item_{{ styleSection.id }}" class="sidebar_item_link">{{ styleSection.name }}</a></li>
 
                         {% endfor %}
 
@@ -38,7 +44,7 @@
 
                 {% for styleSection in styleSections %}
 
-                    <div class="content_item" id="item_15">
+                    <div class="content_item" id="item_{{ styleSection.id }}">
                         <h3>{{ styleSection.name }}</h3>
 
                         <div class="row">

@@ -1,6 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'style/list.html.twig' %}
 
 {% block title %} Style {{ style.name }} {% endblock %}
+
+
+
+{% block breadcrumb %}
+
+    {{ parent() }} / <a href="{{ asset('#') }}" class="header_breadcrumbs_1">стили</a>
+
+{% endblock %}
+
+
 
 {% block body %}
 

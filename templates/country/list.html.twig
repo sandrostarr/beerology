@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block breadcrumb %}
+
+    {{ parent() }} / <a href="{{ asset('/country') }}" class="header_breadcrumbs_1">страны</a>
+
+{% endblock %}
+
 {% block body %}
 
     <section class="page">

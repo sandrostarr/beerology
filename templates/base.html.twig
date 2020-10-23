@@ -103,7 +103,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="header_breadcrumbs_links col-12">
-                                <a href="{{ asset('../') }}" class="header_breadcrumbs_main">главная</a> / <a href="{{ asset('#') }}" class="header_breadcrumbs_1">страны</a>
+                                {% block breadcrumb %} <a href="{{ asset('../') }}" class="header_breadcrumbs_main">главная</a>{% endblock %}
+
                             </div>
                         </div>
                     </div>

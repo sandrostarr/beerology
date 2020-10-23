@@ -1,6 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'country/list.html.twig' %}
 
 {% block title %} Country {{ country.name }} {% endblock %}
+
+{% block breadcrumb %}
+
+    {{ parent() }} / <a href="{{ asset('#') }}" class="header_breadcrumbs_1">{{ country.name|lower }}</a>
+
+{% endblock %}
 
 {% block body %}
 
