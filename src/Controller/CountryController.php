@@ -52,13 +52,16 @@ class CountryController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $country = $em->getRepository('App:Country')
             ->findOneBy(['name' => $country->getName()]);
+        $countries = $em->getRepository('App:Country')
+            ->findAll();
 
         if(!$country) {
             throw $this->createNotFoundException('No country found!');
         }
 
         return $this->render('country/show.html.twig', [
-            'country' => $country
+            'country' => $country,
+            'countries' => $countries
         ]);
 
 
