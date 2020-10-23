@@ -6,7 +6,7 @@
 
 {% block breadcrumb %}
 
-    {{ parent() }} / <a href="{{ asset('#') }}" class="header_breadcrumbs_1">стили</a>
+    {{ parent() }} / <a href="{{ asset('#') }}" class="header_breadcrumbs_1">{{ style.name|lower }}</a>
 
 {% endblock %}
 
