@@ -1,0 +1,46 @@
+<div class="col-md-3 col-sm-12">
+        <aside class="sidebar">
+                <ul class="sidebar_list">
+
+                        {% for styleSection in styleSections %}
+
+                                <li class="sidebar_item"><a href="#item_{{ styleSection.id }}" class="sidebar_item_link">{{ styleSection.name }}</a></li>
+
+                        {% endfor %}
+
+                </ul>
+        </aside>
+</div>
+<div class="col-md-9 col-sm-12 content">
+
+        {% for styleSection in styleSections %}
+
+                <div class="content_item" id="item_{{ styleSection.id }}">
+                        <h3>{{ styleSection.name }}</h3>
+
+                        <div class="row">
+
+                                {% for style in styleSection.getStyles() %}
+
+
+                                        <div class="col-12 col-sm-6 content_item_style"><a href="{{ path('style_show', {
+                                                        'name': style.name
+                                                }) }}">{{ style.name }}</a></div>
+
+                                {% endfor %}
+
+                        </div>
+                </div>
+
+        {% endfor %}
+
+</div>
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="{{ asset('//code.jquery.com/jquery-1.11.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('//code.jquery.com/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/slick.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
+{% endblock %}
