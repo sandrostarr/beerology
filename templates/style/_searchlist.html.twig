@@ -2,37 +2,46 @@
         <aside class="sidebar">
                 <ul class="sidebar_list">
 
-                        {% for styleSection in styleSections %}
 
-                                <li class="sidebar_item"><a href="#item_{{ styleSection.id }}" class="sidebar_item_link">{{ styleSection.name }}</a></li>
 
-                        {% endfor %}
+                    {% for style in styles %}
+
+                        <li class="sidebar_item"><a href="#item_{{ style.id }}" class="sidebar_item_link">{{ style.getStyleSection().name }}</a></li>
+
+                    {% endfor %}
+
+
 
                 </ul>
         </aside>
 </div>
 <div class="col-md-9 col-sm-12 content">
 
-        {% for styleSection in styleSections %}
-
-                <div class="content_item" id="item_{{ styleSection.id }}">
-                        <h3>{{ styleSection.name }}</h3>
-
-                        <div class="row">
-
-                                {% for style in styleSection.getStyles() %}
 
 
-                                        <div class="col-12 col-sm-6 content_item_style"><a href="{{ path('style_show', {
-                                                        'name': style.name
+                            {% for style in styles %}
+
+                                <div class="content_item" id="item_{{ style.getStyleSection().id }}">
+                                    <h3>{{ style.getStyleSection().name }}</h3>
+
+                                    <div class="row">
+
+
+
+
+                                            <div class="col-12 col-sm-6 content_item_style"><a href="{{ path('style_show', {
+                                                    'name': style.name
                                                 }) }}">{{ style.name }}</a></div>
 
-                                {% endfor %}
 
-                        </div>
-                </div>
 
-        {% endfor %}
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+
+
 
 </div>
 

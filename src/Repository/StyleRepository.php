@@ -15,4 +15,12 @@ class StyleRepository extends EntityRepository
     {
         return $this->findBy(array(), array('name' => 'DESC'));
     }
+    public function findAllLike($style)
+    {
+        return $this->createQueryBuilder('style')
+            ->andWhere('style.name LIKE :name')
+            ->setParameter('name', '%' . $style . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -65,6 +65,8 @@
 
         $('.page_search').on('keyup', function(e) {
 
+            let searchText = $(".page_search").val();
+
             e.preventDefault(); //Prevent Default action.
 
             $.ajax({
@@ -73,7 +75,7 @@
                 dataType: 'html',
                 // contentType: "application/json",
                 data: {
-                    'sortType': 'sort_alp'
+                    'searchText': searchText
                 }
             }).done(function (data) {
                 $('.main').html(data);

@@ -44,10 +44,7 @@ class StyleController extends  AbstractController
      */
     public function ajaxActionAsc(Request $request)
     {
-
-        //$data = json_decode($request->getContent(), true);
         $data = $request->getContent();
-        dump($data);
 
         $em = $this->getDoctrine()->getManager();
         $styles = $em->getRepository('App:Style')
@@ -77,21 +74,29 @@ class StyleController extends  AbstractController
 
     /**
      * @Route("/style-ajax-desc", name="style_ajax_desc")
+     * @param Request $request
+     * @return Response
      */
-    public function ajaxActionDesc()
+    public function ajaxActionDesc(Request $request)
     {
+        //$data = json_decode($request->getContent(), true);
+        $data = $request->getContent();
+
+        $search_result = explode('=', $data);
+        $search_result = $search_result[1];
 
         $em = $this->getDoctrine()->getManager();
 
+//        $styles = $em->getRepository('App:Style')
+//            ->findBy(['name' => 'Unde quis ex.']);
+
         $styles = $em->getRepository('App:Style')
-            ->findOneBy(['name' => 'Unde quis ex.']);
+            ->findAllLike($search_result);
 
         $style_sections = $em->getRepository('App:StyleSection')
             ->findAll();
 
-        dump($styles);
-
-        return $this->render('style/list.html.twig', [
+        return $this->render('style/_searchlist.html.twig', [
             'styleSections' => $style_sections,
             'styles' => $styles
         ]);
