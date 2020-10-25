@@ -14,6 +14,13 @@ class TagSection
 {
 
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Article", inversedBy="tags")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -24,6 +31,14 @@ class TagSection
      * @ORM\JoinColumn(nullable=false)
      */
     private $tag;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return mixed
