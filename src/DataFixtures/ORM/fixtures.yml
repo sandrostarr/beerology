@@ -13,3 +13,25 @@ App\Entity\Style:
     name: <text(20)>
     content: <realText(200)>
     style_section: '@style.section_*'
+
+App\Entity\Tag:
+  tag_{1..15}:
+    name: <text(10)>
+
+App\Entity\ArticleSection:
+  article.section_{1..8}:
+    name: <text(20)>
+
+App\Entity\Article:
+  article_{1..20}:
+    article_section: '@article.section_*'
+    name: <text(40)>
+    content: <realText(200)>
+    post_date: <dateTime()>
+    views: <randomDigit(10000)>
+    likes: <randomDigit(150)>
+
+App\Entity\TagSection:
+  tag.section_{1..25}:
+    article: '@article_*'
+    tag: '@tag_*'
