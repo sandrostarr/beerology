@@ -1,0 +1,14 @@
+{% for country in countries %}
+
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+        <a href="{{ path('country_show', {
+            'name': country.name
+        }) }}">
+            <div class="content_countries_item content_countries_item_{{ random(1, 20) }}">
+                <div class="content_countries_item_img"></div>
+                <div class="content_countries_item_country">{{ country.name }}</div>
+            </div>
+        </a>
+    </div>
+
+{% endfor %}

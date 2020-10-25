@@ -74,25 +74,25 @@
             });
         });
 
-        {#$('.page_search').on('keyup', function(e) {#}
+        $('.page_search').on('keyup', function(e) {
 
-        {#    let searchText = $(".page_search").val();#}
+            let searchText = $(".page_search").val();
 
-        {#    e.preventDefault(); //Prevent Default action.#}
+            e.preventDefault(); //Prevent Default action.
 
-        {#    $.ajax({#}
-        {#        url: "{{ path("style_ajax_search") }}",#}
-        {#        type: 'POST',#}
-        {#        dataType: 'html',#}
-        {#        // contentType: "application/json",#}
-        {#        data: {#}
-        {#            'searchText': searchText#}
-        {#        }#}
-        {#    }).done(function (data) {#}
-        {#        $('.main').html(data);#}
-        {#    });#}
+            $.ajax({
+                url: "{{ path("country_ajax_search") }}",
+                type: 'POST',
+                dataType: 'html',
+                // contentType: "application/json",
+                data: {
+                    'searchText': searchText
+                }
+            }).done(function (data) {
+                $('.content_countries').html(data);
+            });
 
-        {#});#}
+        });
 
     </script>
 
