@@ -22,26 +22,13 @@
                 </div>
                 <div class="col-lg-5 col-md-12">
                     <div class="page_sort">
-                        Сортировать: <a class="page_sort_active" href="#">по релевантности</a> / <a href="#">по популярности</a> / <a href="#">по алфавиту</a>
+                        Сортировать: <a class="page_sort_type" id="sort_alp_asc" href="#">по алфавиту</a>
                     </div>
                 </div>
             </div>
             <div class="row content_countries">
 
-                {% for country in countries %}
-
-                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                        <a href="{{ path('country_show', {
-                            'name': country.name
-                        }) }}">
-                            <div class="content_countries_item content_countries_item_{{ random(1, 20) }}">
-                                <div class="content_countries_item_img"></div>
-                                <div class="content_countries_item_country">{{ country.name }}</div>
-                            </div>
-                        </a>
-                    </div>
-
-                {% endfor %}
+                {% include 'country/_sortlist.html.twig' %}
 
             </div>
         </div>
@@ -49,5 +36,64 @@
     <ul>
 
     </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+        $('.page_sort_type').on('click', function(e) {
+
+            let id = this.id;
+            $('.page_sort_type').removeClass('page_sort_active');
+            $(this).addClass('page_sort_active');
+
+            if($(this).attr("id") === "sort_alp_asc"){
+                $(this).attr("id", "sort_alp_desc");
+                $(this).html( "по алфавиту▼" );
+            } else{
+                $(this).attr("id", "sort_alp_asc");
+                $(this).html( "по алфавиту▲" );
+            }
+
+            e.preventDefault(); //Prevent Default action.
+
+            $.ajax({
+                url: "{{ path("country_ajax_sort") }}",
+                type: 'POST',
+                dataType: 'html',
+                // contentType: "application/json",
+                data: {
+                    'sortType': id
+                }
+            }).done(function (data) {
+                $('.content_countries').html(data);
+            });
+        });
+
+        {#$('.page_search').on('keyup', function(e) {#}
+
+        {#    let searchText = $(".page_search").val();#}
+
+        {#    e.preventDefault(); //Prevent Default action.#}
+
+        {#    $.ajax({#}
+        {#        url: "{{ path("style_ajax_search") }}",#}
+        {#        type: 'POST',#}
+        {#        dataType: 'html',#}
+        {#        // contentType: "application/json",#}
+        {#        data: {#}
+        {#            'searchText': searchText#}
+        {#        }#}
+        {#    }).done(function (data) {#}
+        {#        $('.main').html(data);#}
+        {#    });#}
+
+        {#});#}
+
+    </script>
 
 {% endblock %}

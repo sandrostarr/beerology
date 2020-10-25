@@ -20,4 +20,23 @@ class CountryRepository extends EntityRepository
             ->getQuery()
             ->execute();
     }
+
+    public function findAllAsc()
+    {
+        return $this->findBy(array(), array('name' => 'ASC'));
+    }
+
+    public function findAllDesc()
+    {
+        return $this->findBy(array(), array('name' => 'DESC'));
+    }
+
+    public function findAllLike($country)
+    {
+        return $this->createQueryBuilder('country')
+            ->andWhere('country.name LIKE :name')
+            ->setParameter('name', '%' . $country . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }
