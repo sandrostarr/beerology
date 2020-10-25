@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="article_section")
+ * @ORM\Table(name="tag")
  */
-class ArticleSection
+class Tag
 {
 
     /**
@@ -25,7 +25,7 @@ class ArticleSection
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="article_section")
+     * @ORM\OneToMany(targetEntity="TagSection", mappedBy="tag")
      */
     private $articles;
 
@@ -61,7 +61,7 @@ class ArticleSection
     /**
      * @return ArrayCollection
      */
-    public function getStyles()
+    public function getArticles()
     {
         return $this->articles;
     }

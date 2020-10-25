@@ -3,7 +3,7 @@
 
 namespace App\Entity;
 
-
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,6 +48,16 @@ class Article
      * @ORM\Column(type="integer")
      */
     private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TagSection", mappedBy="article")
+     */
+    private $tags;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -151,6 +161,14 @@ class Article
     public function setLikes($likes): void
     {
         $this->likes = $likes;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 
 }
