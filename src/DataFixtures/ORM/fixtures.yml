@@ -28,8 +28,8 @@ App\Entity\Article:
     name: <text(40)>
     content: <realText(200)>
     post_date: <dateTime()>
-    views: <randomDigit(10000)>
-    likes: <randomDigit(150)>
+    views: <numberBetween(50,10000)>
+    likes: <numberBetween(0,150)>
 
 App\Entity\TagSection:
   tag.section_{1..25}:
