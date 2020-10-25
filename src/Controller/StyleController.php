@@ -38,7 +38,7 @@ class StyleController extends  AbstractController
     }
 
     /**
-     * @Route("/style-ajax-asc", name="styleasc")
+     * @Route("/style-ajax-sort", name="style_ajax_sort")
      * @param Request $request
      * @return Response
      */
@@ -50,15 +50,11 @@ class StyleController extends  AbstractController
         $styles = $em->getRepository('App:Style')
             ->findAll();
 
-        if($data == 'sortType=sort_rel') {
-            $style_sections = $em->getRepository('App:StyleSection')
-            ->findAllAsc();
-        }
-        else if($data == 'sortType=sort_pop') {
+        if($data == 'sortType=sort_alp_desc') {
             $style_sections = $em->getRepository('App:StyleSection')
                 ->findAllDesc();
         }
-        else if($data == 'sortType=sort_alp') {
+        else if($data == 'sortType=sort_alp_asc') {
             $style_sections = $em->getRepository('App:StyleSection')
                 ->findAllAsc();
         } else {
@@ -73,7 +69,7 @@ class StyleController extends  AbstractController
     }
 
     /**
-     * @Route("/style-ajax-desc", name="style_ajax_desc")
+     * @Route("/style-ajax-search", name="style_ajax_search")
      * @param Request $request
      * @return Response
      */

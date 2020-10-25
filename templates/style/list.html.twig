@@ -24,7 +24,7 @@
             </div>
             <div class="col-lg-5 col-md-12">
                 <div class="page_sort">
-                    Сортировать: <a class="page_sort_type" id="sort_rel" href="#">по релевантности</a> / <a class="page_sort_type" id="sort_pop" href="#">по популярности</a> / <a class="page_sort_type" id="sort_alp" href="#">по алфавиту</a>
+                    Сортировать: <a class="page_sort_type" id="sort_alp_asc" href="#">по алфавиту</a>
                 </div>
             </div>
         </div>
@@ -48,10 +48,18 @@
             $('.page_sort_type').removeClass('page_sort_active');
             $(this).addClass('page_sort_active');
 
+            if($(this).attr("id") === "sort_alp_asc"){
+                $(this).attr("id", "sort_alp_desc");
+                $(this).html( "по алфавиту▼" );
+            } else{
+                $(this).attr("id", "sort_alp_asc");
+                $(this).html( "по алфавиту▲" );
+            }
+
             e.preventDefault(); //Prevent Default action.
 
             $.ajax({
-                url: "{{ path("styleasc") }}",
+                url: "{{ path("style_ajax_sort") }}",
                 type: 'POST',
                 dataType: 'html',
                 // contentType: "application/json",
@@ -70,7 +78,7 @@
             e.preventDefault(); //Prevent Default action.
 
             $.ajax({
-                url: "{{ path("style_ajax_desc") }}",
+                url: "{{ path("style_ajax_search") }}",
                 type: 'POST',
                 dataType: 'html',
                 // contentType: "application/json",
