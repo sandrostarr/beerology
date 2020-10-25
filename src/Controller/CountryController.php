@@ -50,7 +50,7 @@ class CountryController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function ajaxActionAsc1(Request $request)
+    public function ajaxActionAsc(Request $request)
     {
         $data = $request->getContent();
 
@@ -80,7 +80,7 @@ class CountryController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function ajaxActionDesc1(Request $request)
+    public function ajaxActionDesc(Request $request)
     {
         //$data = json_decode($request->getContent(), true);
         $data = $request->getContent();
