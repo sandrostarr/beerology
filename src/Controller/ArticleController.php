@@ -12,19 +12,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends  AbstractController
 {
     /**
-     * @Route("/style")
+     * @Route("/news")
      */
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $styles = $em->getRepository('App:Article')
+        $articles = $em->getRepository('App:Article')
             ->findAll();
-        $style_sections = $em->getRepository('App:ArticleSection')
+        $article_sections = $em->getRepository('App:ArticleSection')
+            ->findAll();
+        $tags = $em->getRepository('App:ArticleSection')
             ->findAll();
 
-        return $this->render('style/list.html.twig', [
-            'styleSections' => $style_sections,
-            'styles' => $styles,
+        return $this->render('article/list.html.twig', [
+            'articles' => $articles,
+            'articleSections' => $article_sections,
+            'tags' => $tags,
         ]);
     }
 }

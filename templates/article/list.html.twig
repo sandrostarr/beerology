@@ -1,0 +1,225 @@
+{% extends 'base.html.twig' %}
+
+ {% block body %}
+
+<section class="page">
+    <div class="container">
+        <div class="page_block page_title_block"></div>
+        <h2 class="page_title">Новости</h2>
+        <div class="row page_search_row">
+            <div class="col-lg-2 d-none d-lg-block">
+                <div class="page_search_res">найдено {{ articles|length }} статей</div>
+            </div>
+            <div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+                <input class="search page_search header_search" type="text">
+                <img class="search_icon page_search_icon header_search_icon" src="../icons/search logo.png" alt="search">
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <div class="page_sort">
+                    Сортировать: <a class="page_sort_active" href="#">по релевантности</a> / <a href="#">по популярности</a> / <a href="#">по алфавиту</a>
+                </div>
+            </div>
+        </div>
+        <div class="row main">
+            <div class="col-md-3 col-sm-12">
+                <aside class="sidebar">
+                    <ul class="sidebar_list">
+
+                        {% for articleSection in articleSections %}
+
+                            <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ articleSection.name }}</a></li>
+
+                        {% endfor %}
+
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-md-9 col-sm-12 content_news">
+                <article class="content_news_item content_news_item_1">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="article.html"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
+                            <a href="article.html" class="content_news_item_title">Большинство крупнейших крафтовых пивоварен США в 2019 году увеличили объёмы производства
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">04.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">2</span><span class="content_news_item_subline_activity_views">130</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_2">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="article.html"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">законы</a></p>
+                            <a href="article.html" class="content_news_item_title">В Испании ввели «знак крафтовости»
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">02.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">4</span><span class="content_news_item_subline_activity_views">155</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_3">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="article.html"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">русский хмель</a></p>
+                            <a href="article.html" class="content_news_item_title">«Татспиртпром» начал поставки пива в Белоруссию
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">01.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">1</span><span class="content_news_item_subline_activity_views">120</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_4">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">русский хмель</a></p>
+                            <a href="#" class="content_news_item_title">Росстат: за 4 месяца производство пива в России выросло на 1,5%
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">26.05.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">5</span><span class="content_news_item_subline_activity_views">317</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_5">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
+                            <a href="#" class="content_news_item_title">Как «Чёрный мор» создал культуру британских пабов
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">19.05.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">3</span><span class="content_news_item_subline_activity_views">176</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_6">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">законы</a></p>
+                            <a href="#" class="content_news_item_title">В Испании ввели «знак крафтовости»
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">01.05.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">1</span><span class="content_news_item_subline_activity_views">232</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_7">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
+                            <a href="#" class="content_news_item_title">Большинство крупнейших крафтовых пивоварен США в 2019 году увеличили объёмы производства
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">04.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">2</span><span class="content_news_item_subline_activity_views">130</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_8">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
+                            <a href="#" class="content_news_item_title">Росстат: за 4 месяца производство пива в России выросло на 1,5%
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">04.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">2</span><span class="content_news_item_subline_activity_views">130</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_9">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
+                            <a href="#" class="content_news_item_title">Большинство крупнейших крафтовых пивоварен США в 2019 году увеличили объёмы производства
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">04.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">2</span><span class="content_news_item_subline_activity_views">130</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="content_news_item content_news_item_10">
+                    <div class="row content_news_item_block">
+                        <div class="col-md-3 content_news_item_img_block">
+                            <a href="#"><div class="content_news_item_img"></div></a>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
+                            <a href="#" class="content_news_item_title">Росстат: за 4 месяца производство пива в России выросло на 1,5%
+                            </a>
+                            <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                            <div class="content_news_item_subline">
+                                <span class="content_news_item_subline_date">04.06.2020</span>
+                                <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">2</span><span class="content_news_item_subline_activity_views">130</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<nav class="pagination" aria-label="Последние новости">
+    <ul class="pagination_list">
+        <li><a class="pagination_item" href="#">Первая</a></li>
+        <li><a class="pagination_item pagination_item_active" href="#">1</a></li>
+        <li><a class="pagination_item" href="#">2</a></li>
+        <li><a class="pagination_item" href="#">3</a></li>
+        <li><a class="pagination_item" href="#">4</a></li>
+        <li><a class="pagination_item" href="#">5</a></li>
+        <li><a class="pagination_item" href="#">Последняя</a></li>
+    </ul>
+</nav>
+     
+ {% endblock %}
