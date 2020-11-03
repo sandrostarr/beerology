@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
- {% block body %}
+{% block breadcrumb %}
+
+    {{ parent() }} / <a href="{{ asset('/news') }}" class="header_breadcrumbs_1">новости</a>
+
+{% endblock %}
+
+{% block body %}
 
 <section class="page">
     <div class="container">
@@ -12,7 +18,7 @@
             </div>
             <div class="col-lg-4 offset-lg-1 d-none d-lg-block">
                 <input class="search page_search header_search" type="text">
-                <img class="search_icon page_search_icon header_search_icon" src="../icons/search logo.png" alt="search">
+                <img class="search_icon page_search_icon header_search_icon" src="{{ asset('../icons/search logo.png') }}" alt="search">
             </div>
             <div class="col-lg-5 col-md-12">
                 <div class="page_sort">
@@ -41,11 +47,15 @@
                 <article class="content_news_item content_news_item_1">
                     <div class="row content_news_item_block">
                         <div class="col-md-3 content_news_item_img_block">
-                            <a href="article.html"><div class="content_news_item_img"></div></a>
+                            <a href="{{ path('article_show', {
+                                'name': article.name,
+                            }) }}"><div class="content_news_item_img"></div></a>
                         </div>
                         <div class="col-md-9">
-                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">технологии</a></p>
-                            <a href="article.html" class="content_news_item_title">{{ article.name }}</a>
+                            <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">{{ article.getArticleSection().name }}</a></p>
+                            <a href="{{ path('article_show', {
+                                'name': article.name,
+                            }) }}" class="content_news_item_title">{{ article.name }}</a>
                             <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
                             <div class="content_news_item_subline">
                                 <span class="content_news_item_subline_date">{{ article.postDate|date('Y-m-d') }}</span>

@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Style;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,5 +30,32 @@ class ArticleController extends  AbstractController
             'articleSections' => $article_sections,
             'tags' => $tags,
         ]);
+    }
+
+    /**
+     * @Route("/news/{name}", name="article_show")
+     */
+    public function showAction(Article $article)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('App:Article')
+            ->findOneBy(['name' => $article->getName()]);
+        $articles = $em->getRepository('App:Article')
+            ->findAll();
+        $article_sections = $em->getRepository('App:ArticleSection')
+            ->findAll();
+//        $style_section = $article->getStyleSection();
+
+
+        if(!$article) {
+            throw $this->createNotFoundException('No article found!');
+        }
+
+        return $this->render('article/show.html.twig', [
+            'article' => $article,
+//            'articles' => $articles,
+//            'articleSections' => $article_sections,
+        ]);
+
     }
 }

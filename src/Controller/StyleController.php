@@ -118,6 +118,5 @@ class StyleController extends  AbstractController
             'styleSection' => $style_section
         ]);
 
-
     }
 }
