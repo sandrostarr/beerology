@@ -49,7 +49,7 @@
                         <div class="col-md-3 content_news_item_img_block">
                             <a href="{{ path('article_show', {
                                 'name': article.name,
-                            }) }}"><div class="content_news_item_img"></div></a>
+                            }) }}"><div class="content_news_item_img" style="background-image:url('{{asset('../img/' ~ article.image)}}')"></div></a>
                         </div>
                         <div class="col-md-9">
                             <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">{{ article.getArticleSection().name }}</a></p>

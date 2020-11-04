@@ -27,6 +27,7 @@ App\Entity\Article:
     article_section: '@article.section_*'
     name: <text(40)>
     content: <realText(200)>
+    image: <url()>
     post_date: <dateTime()>
     views: <numberBetween(50,10000)>
     likes: <numberBetween(0,150)>
