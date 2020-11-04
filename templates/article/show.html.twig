@@ -39,23 +39,25 @@
                             <article class="col-12 content_article">
                                 <div class="content_item_img"></div>
                                 <div class="content_item_text">
-                                    <p>Испанская ассоциация независимых крафтовых пивоварен AECAI представила особый логотип, который её участники могут использовать для информирования потребителей о том, что это пиво изготовлено небольшой независимой пивоварней.</p>
 
-                                    <p>Использовать его могут крафтовые производители, которые производят не больше 5 млн литров пива в год и не используют удешевляющие производство ингредиенты. Пивоварня должна быть независимой от крупных производителей, за ней должен стоять малый бизнес. Также важно следовать принципам устойчивого развития и экономики замкнутого цикла. AECAI отмечает, что большинство крафтовых производителей имеют связи с сельской местностью и вносят вклад в её экономическое развитие, а также создают рабочие места. Это очень важно для Испании, где численность сельского населения постоянно сокращается, и многие населённые пункты пустеют.</p>
-
-                                    <p>Логотип предлагается использовать на этикетках и в маркетинговых компаниях. Использовать его могут не только производители, но и другие участники крафтового рынка — поставщики сырья и оборудования, оптовые и розничные компании, средства массовой информации. Всё это позволит привлечь внимание к культуре крафтового, независимого пива. Ранее аналогичные обозначения ввели в США, Британии, Австралии, Ирландии и Польше.</p>
-
-                                    <p>Ассоциация считает, что использование этого знака повысит прозрачность рынка и поможет потребителям выбирать продукцию независимых испанских производителей, не контролируемых крупными компаниями.</p>
-
-                                    <p>По данным AECAI, из-за коронавируса по итогам 2020 года производство крафтового пива в Испании может сократиться почти вдвое, и вместо планируемого прироста рынок покажет падение.</p>
+                                    {{ article.content }}
 
                                 </div>
-                                <div class="content_item_tags">Метки: <a class="content_item_tags_link" href="#">Испания</a>, <a class="content_item_tags_link" href="#">Крафтовая революция</a>, <a class="content_item_tags_link" href="#">Маркетинг</a></div>
+                                <div class="content_item_tags">Теги:
+
+                                    {% for tag in article.GetTags %}
+                                        <a class="content_item_tags_link" href="#">{{ tag.name }}</a>
+                                    {% endfor %}
+
+                                </div>
                                 <div class="content_item_container">
                                     <div class="content_news_item_subline content_item_subline">
                                         <span class="content_item_subline_author">Автор: <a href="#">Админ</a></span>
 
-                                        <span class="content_news_item_subline_activity"><span class="content_item_subline_share"></span><span class="content_news_item_subline_activity_likes">4</span><span class="content_news_item_subline_activity_views">155</span></span>
+
+
+
+                                        <span class="content_news_item_subline_activity"><span class="content_item_subline_share"></span><span class="content_news_item_subline_activity_likes">{{ article.getLikes }}</span><span class="content_news_item_subline_activity_views">{{ article.getViews }}</span></span>
                                     </div>
                                 </div>
                             </article>

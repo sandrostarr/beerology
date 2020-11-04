@@ -29,6 +29,11 @@ class Country
     private $content;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -84,8 +89,4 @@ class Country
         $this->image = $image;
     }
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $image;
 }

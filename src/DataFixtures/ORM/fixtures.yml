@@ -30,8 +30,3 @@ App\Entity\Article:
     post_date: <dateTime()>
     views: <numberBetween(50,10000)>
     likes: <numberBetween(0,150)>
-
-App\Entity\TagSection:
-  tag.section_{1..25}:
-    article: '@article_*'
-    tag: '@tag_*'

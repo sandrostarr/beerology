@@ -25,7 +25,7 @@ class Tag
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="TagSection", mappedBy="tag")
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags")
      */
     private $articles;
 
@@ -59,11 +59,27 @@ class Tag
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
     public function getArticles()
     {
         return $this->articles;
     }
 
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->addTag($this);
+        }
+        return $this;
+    }
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
+            $article->removeTag($this);
+        }
+        return $this;
+    }
 }

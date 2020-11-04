@@ -35,6 +35,11 @@ class Article
     private $article_section;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $post_date;
@@ -50,7 +55,7 @@ class Article
     private $likes;
 
     /**
-     * @ORM\OneToMany(targetEntity="TagSection", mappedBy="article")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
      */
     private $tags;
 
@@ -118,6 +123,22 @@ class Article
     /**
      * @return mixed
      */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPostDate()
     {
         return $this->post_date;
@@ -164,11 +185,27 @@ class Article
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
     public function getTags()
     {
         return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
+        return $this;
     }
 
 }
