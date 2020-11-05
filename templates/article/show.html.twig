@@ -13,21 +13,18 @@
     <section class="page">
         <div class="container">
             <div class="page_block page_title_block"></div>
-            <h2 class="page_title">Законы</h2>
+            <h2 class="page_title">{{ article.getArticleSection.name }}</h2>
             <div class="row main">
                 <div class="col-md-3 col-sm-12">
                     <aside class="sidebar">
                         <ul class="sidebar_list">
-                            <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">Пиво</a></li>
-                            <li class="sidebar_item"><a href="#item_2" class="sidebar_item_link sidebar_item_link_active">Законы</a></li>
-                            <li class="sidebar_item"><a href="#item_3" class="sidebar_item_link">Технологии</a></li>
-                            <li class="sidebar_item"><a href="#item_4" class="sidebar_item_link">Бары и магазины</a></li>
-                            <li class="sidebar_item"><a href="#item_5" class="sidebar_item_link">Русский хмель</a></li>
-                            <li class="sidebar_item"><a href="#item_6" class="sidebar_item_link">Вино и крепкий алкоголь</a></li>
-                            <li class="sidebar_item"><a href="#item_7" class="sidebar_item_link">Трезвость</a></li>
-                            <li class="sidebar_item"><a href="#item_8" class="sidebar_item_link">Добрые дела</a></li>
-                            <li class="sidebar_item"><a href="#item_9" class="sidebar_item_link">Видеоканал</a></li>
-                            <li class="sidebar_item"><a href="#item_10" class="sidebar_item_link">Аналитика</a></li>
+
+                            {% for articleSection in articleSections %}
+
+                                <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ articleSection.name}}</a></li>
+
+                            {% endfor %}
+
                         </ul>
                     </aside>
                 </div>
