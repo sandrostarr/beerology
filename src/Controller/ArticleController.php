@@ -44,8 +44,11 @@ class ArticleController extends  AbstractController
             ->findAll();
         $article_sections = $em->getRepository('App:ArticleSection')
             ->findAll();
-//        $style_section = $article->getStyleSection();
-
+        $article_section = $article->getArticleSection()->getId();
+        $three_articles = $em->getRepository('App:Article')
+            ->findBy(['article_section' => $article_section],
+                array('views' => 'DESC'),
+                3);
 
         if(!$article) {
             throw $this->createNotFoundException('No article found!');
@@ -53,7 +56,7 @@ class ArticleController extends  AbstractController
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
-//            'articles' => $articles,
+            'three_articles' => $three_articles,
             'articleSections' => $article_sections,
         ]);
 
