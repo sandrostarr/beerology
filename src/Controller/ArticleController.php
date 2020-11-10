@@ -73,8 +73,8 @@ class ArticleController extends  AbstractController
             ->findOneBy(['name' => $article_section->getName()]);
 //        $articles = $em->getRepository('App:Article')
 //            ->findAll();
-//        $article_sections = $em->getRepository('App:ArticleSection')
-//            ->findAll();
+        $article_sections = $em->getRepository('App:ArticleSection')
+            ->findAll();
 //        $article_section = $article->getArticleSection()->getId();
         $articles = $em->getRepository('App:Article')
             ->findBy(['article_section' => $section]);
@@ -83,9 +83,10 @@ class ArticleController extends  AbstractController
             throw $this->createNotFoundException('No section found!');
         }
 
-        return $this->render('article/show.html.twig', [
+        return $this->render('article/listSection.html.twig', [
             'section' => $section,
             'articles' => $articles,
+            'articleSections' => $article_sections,
         ]);
 
     }
