@@ -19,11 +19,11 @@
                     <aside class="sidebar">
                         <ul class="sidebar_list">
 
-                            {% for articleSection in articleSections %}
+                            {% block sidebar %}
 
-                                <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ articleSection.name}}</a></li>
+                                {{ parent() }}
 
-                            {% endfor %}
+                            {% endblock %}
 
                         </ul>
                     </aside>

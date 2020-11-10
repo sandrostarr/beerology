@@ -31,11 +31,17 @@
                 <aside class="sidebar">
                     <ul class="sidebar_list">
 
-                        {% for articleSection in articleSections %}
+                        {% block sidebar %}
 
-                            <li class="sidebar_item"><a href="#item_1" class="sidebar_item_link">{{ articleSection.name }}</a></li>
+                            {% for articleSection in articleSections %}
 
-                        {% endfor %}
+                                <li class="sidebar_item"><a href="{{ path('section_show', {
+                                        'name': articleSection.name,
+                                    }) }}" class="sidebar_item_link">{{ articleSection.name }}</a></li>
+
+                            {% endfor %}
+
+                        {% endblock %}
 
                     </ul>
                 </aside>

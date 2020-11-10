@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\ArticleSection;
 use App\Entity\Style;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,6 +59,33 @@ class ArticleController extends  AbstractController
             'article' => $article,
             'three_articles' => $three_articles,
             'articleSections' => $article_sections,
+        ]);
+
+    }
+
+    /**
+     * @Route("/news/section/{name}", name="section_show")
+     */
+    public function showSectionAction(ArticleSection $article_section)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $section = $em->getRepository('App:ArticleSection')
+            ->findOneBy(['name' => $article_section->getName()]);
+//        $articles = $em->getRepository('App:Article')
+//            ->findAll();
+//        $article_sections = $em->getRepository('App:ArticleSection')
+//            ->findAll();
+//        $article_section = $article->getArticleSection()->getId();
+        $articles = $em->getRepository('App:Article')
+            ->findBy(['article_section' => $section]);
+
+        if(!$section) {
+            throw $this->createNotFoundException('No section found!');
+        }
+
+        return $this->render('article/show.html.twig', [
+            'section' => $section,
+            'articles' => $articles,
         ]);
 
     }
