@@ -111,7 +111,7 @@ $(document).ready(function(){
     $(function() {
         let loc_path = location.pathname;
         if(loc_path) {
-            $('.sidebar_list a[href^="' + location.pathname + '"]').addClass('sidebar_item_link_active');
+            $('.sidebar_list a[href$="' + window.location.pathname.split("/").pop() + '"]').addClass('sidebar_item_link_active');
         }
     });
 
