@@ -4,7 +4,232 @@
 
  {% block body %}
 
-  <h1>Hello!</h1>
+  <section class="news">
+   <div class="container">
+    <div class="news_block section_title_block"></div>
+    <h2 class="section_title">Новости</h2>
+    <div class="row">
+
+     {% for article in articles %}
+
+      <div class="col-md-4 col-sm-12 news_block">
+       <a href="news/article.html">
+        <div class="news_item news_item_{{ article.id }}">
+         <div class="news_item_date">{{ article.postDate|date('Y-m-d') }}</div>
+         <div class="news_item_subtitle">{{ article.name }}</div>
+         <div class="news_item_article">
+          {{ article.content }}</div>
+         <div class="news_item_line"></div>
+        </div>
+       </a>
+      </div>
+
+     {% endfor %}
+
+    </div>
+   </div>
+  </section>
+
+  <section class="styles">
+   <div class="container carousel">
+    <div class="section_header">
+     <div class="styles_block section_title_block"></div>
+     <h2 class="section_title">Виды пива</h2>
+     <a class="section_openall" href="styles/index.html">Открыть все</a>
+     <div class="section_arrows">
+      <!-- <a href="#" class="section_arrows_left"><</a>
+      <a href="#" class="section_arrows_right">></a> -->
+     </div>
+    </div>
+    <div class="row carousel_inner_styles">
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_1">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Старый эль (англ. Old Ale)</div>
+        <div class="styles_item_country">Великобритания</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_2">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Дуббель (англ. Belgian Dubbel Ale)</div>
+        <div class="styles_item_country">Бельгия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_3">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Ирландский красный эль (англ. Irish Red Ale)
+        </div>
+        <div class="styles_item_country">Ирландия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_4">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Старый эль (англ. Old Ale)</div>
+        <div class="styles_item_country">Великобритания</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_5">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Дуббель (англ. Belgian Dubbel Ale)</div>
+        <div class="styles_item_country">Бельгия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_6">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Ирландский красный эль (англ. Irish Red Ale)
+        </div>
+        <div class="styles_item_country">Ирландия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_7">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Старый эль (англ. Old Ale)</div>
+        <div class="styles_item_country">Великобритания</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-3">
+      <a href="styles/altbier.html">
+       <div class="styles_item styles_item_8">
+        <div class="styles_item_img"></div>
+        <div class="styles_item_subtitle">Все виды</div>
+       </div>
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <section class="countries">
+   <div class="container carousel">
+    <div class="section_header">
+     <div class="countries_block section_title_block"></div>
+     <h2 class="section_title">Страны</h2>
+     <a class="section_openall" href="countries/index.html">Открыть все</a>
+     <div class="section_arrows">
+      <!-- <a href="#" class="section_arrows_left"><</a>
+      <a href="#" class="section_arrows_right">></a> -->
+     </div>
+    </div>
+    <div class="row carousel_inner_countries">
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_1">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Англия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_2">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Бельгия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_3">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Ирландия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_4">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Чехия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_5">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Германия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_6">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Россия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_7">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Япония</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_8">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Корея</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_9">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Италия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_10">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">США</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_11">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_country">Австрия</div>
+       </div>
+      </a>
+     </div>
+     <div class="col-md-2">
+      <a href="countries/england.html">
+       <div class="countries_item countries_item_12">
+        <div class="countries_item_img"></div>
+        <div class="countries_item_subtitle">Все страны</div>
+       </div>
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
 
  {% endblock %}
 

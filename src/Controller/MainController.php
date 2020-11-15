@@ -15,6 +15,27 @@ class MainController extends AbstractController
      */
     public function listAction()
     {
-        return $this->render('main.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('App:Article')
+            ->findBy(array(),
+                array('id' => 'DESC'),
+                5,
+                0);
+        $styles = $em->getRepository('App:Style')
+            ->findBy(array(),
+                array('id' => 'DESC'),
+                7,
+                0);
+        $countries = $em->getRepository('App:Country')
+            ->findBy(array(),
+                array('id' => 'DESC'),
+                11,
+                0);
+
+        return $this->render('main.html.twig', [
+            'articles' => $articles,
+            'styles' => $styles,
+            'countries' => $countries,
+        ]);
     }
 }
