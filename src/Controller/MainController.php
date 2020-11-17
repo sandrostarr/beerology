@@ -16,11 +16,16 @@ class MainController extends AbstractController
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $last_article = $em->getRepository('App:Article')
+            ->findBy(array(),
+                array('id' => 'ASC'),
+                1,
+                0)[0];
         $articles = $em->getRepository('App:Article')
             ->findBy(array(),
                 array('id' => 'ASC'),
-                5,
-                0);
+                4,
+                1);
         $styles = $em->getRepository('App:Style')
             ->findBy(array(),
                 array('id' => 'DESC'),
@@ -34,6 +39,7 @@ class MainController extends AbstractController
 
         return $this->render('main.html.twig', [
             'articles' => $articles,
+            'lastArticle' => $last_article,
             'styles' => $styles,
             'countries' => $countries,
         ]);

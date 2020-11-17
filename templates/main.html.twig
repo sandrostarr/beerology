@@ -10,10 +10,26 @@
     <h2 class="section_title">Новости</h2>
     <div class="row">
 
+     <div class="col-md-8 col-sm-12 news_block">
+      <a href="{{ path('article_show', {
+       'name': lastArticle.name,
+      }) }}">
+       <div class="news_item" style="background-image:url('{{asset('../img/' ~ lastArticle.image)}}')">
+        <div class="news_item_date">{{ lastArticle.postDate|date('Y-m-d') }}</div>
+        <div class="news_item_subtitle">{{ lastArticle.name }}</div>
+        <div class="news_item_article">
+         {{ lastArticle.content }}</div>
+        <div class="news_item_line"></div>
+       </div>
+      </a>
+     </div>
+
      {% for article in articles %}
 
       <div class="col-md-4 col-sm-12 news_block">
-       <a href="news/article.html">
+       <a href="{{ path('article_show', {
+        'name': article.name,
+       }) }}">
         <div class="news_item" style="background-image:url('{{asset('../img/' ~ article.image)}}')">
          <div class="news_item_date">{{ article.postDate|date('Y-m-d') }}</div>
          <div class="news_item_subtitle">{{ article.name }}</div>
