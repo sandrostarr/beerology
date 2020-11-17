@@ -18,7 +18,7 @@ class MainController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('App:Article')
             ->findBy(array(),
-                array('id' => 'DESC'),
+                array('id' => 'ASC'),
                 5,
                 0);
         $styles = $em->getRepository('App:Style')
@@ -28,7 +28,7 @@ class MainController extends AbstractController
                 0);
         $countries = $em->getRepository('App:Country')
             ->findBy(array(),
-                array('id' => 'DESC'),
+                array('id' => 'ASC'),
                 11,
                 0);
 

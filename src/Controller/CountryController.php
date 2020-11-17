@@ -32,7 +32,7 @@ class CountryController extends AbstractController
     }
 
     /**
-     * @Route("/country")
+     * @Route("/country", name="countries")
      */
     public function listAction()
     {

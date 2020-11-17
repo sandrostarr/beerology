@@ -21,7 +21,7 @@ class StyleController extends  AbstractController
     }
 
     /**
-     * @Route("/style")
+     * @Route("/style", name="styles")
      */
     public function listAction()
     {
