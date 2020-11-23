@@ -40,6 +40,11 @@ class Article
     private $image;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_published;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $post_date;
@@ -134,6 +139,22 @@ class Article
     public function setImage($image): void
     {
         $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsPublished()
+    {
+        return $this->is_published;
+    }
+
+    /**
+     * @param mixed $is_published
+     */
+    public function setIsPublished($is_published): void
+    {
+        $this->is_published = $is_published;
     }
 
     /**
