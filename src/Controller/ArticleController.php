@@ -24,19 +24,18 @@ class ArticleController extends  AbstractController
 
 
         $em = $this->getDoctrine()->getManager();
-        $articles = $em->getRepository('App:Article')
-            ->findAll();
+        $articles_count = count($em->getRepository('App:Article')
+            ->findAll());
         $article_sections = $em->getRepository('App:ArticleSection')
             ->findAll();
         $tags = $em->getRepository('App:ArticleSection')
             ->findAll();
 
-        $articles_per_page = 5;
-        $articles_count = count($articles);
+        $articles_per_page = 10;
         $total_pages = ceil($articles_count / $articles_per_page);
         $shift = $articles_per_page * ($page - 1);
 
-        $articles_sorted = $em->getRepository('App:Article')
+        $articles = $em->getRepository('App:Article')
             ->findBy(
                 array(),
                 array(),
@@ -46,7 +45,7 @@ class ArticleController extends  AbstractController
 
 
         return $this->render('article/list.html.twig', [
-            'articles' => $articles_sorted,
+            'articles' => $articles,
             'articleSections' => $article_sections,
             'tags' => $tags,
             'page' => $page,
