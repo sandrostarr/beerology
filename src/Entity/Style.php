@@ -36,6 +36,11 @@ class Style
     private $style_section;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -89,5 +94,21 @@ class Style
     public function setStyleSection(StyleSection $style_section)
     {
         $this->style_section = $style_section;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
     }
 }
