@@ -18,6 +18,11 @@ class ArticleController extends  AbstractController
      */
     public function listAction()
     {
+        if (isset($_GET['page'])){
+            $page = $_GET['page'];
+        }else $page = 1;
+
+
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('App:Article')
             ->findAll();
@@ -26,10 +31,26 @@ class ArticleController extends  AbstractController
         $tags = $em->getRepository('App:ArticleSection')
             ->findAll();
 
+        $articles_per_page = 5;
+        $articles_count = count($articles);
+        $total_pages = ceil($articles_count / $articles_per_page);
+        $shift = $articles_per_page * ($page - 1);
+
+        $articles_sorted = $em->getRepository('App:Article')
+            ->findBy(
+                array(),
+                array(),
+                $articles_per_page,
+                $shift
+            );
+
+
         return $this->render('article/list.html.twig', [
-            'articles' => $articles,
+            'articles' => $articles_sorted,
             'articleSections' => $article_sections,
             'tags' => $tags,
+            'page' => $page,
+            'total_pages' => $total_pages,
         ]);
     }
 
