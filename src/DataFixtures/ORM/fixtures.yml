@@ -2,7 +2,7 @@ App\Entity\Country:
   country_{1..23}:
     name: <country()>
     content: <realText(200)>
-    image: <url()>
+    image: 'denmark.jpg'
 
 App\Entity\StyleSection:
   style.section_{1..10}:
@@ -13,6 +13,7 @@ App\Entity\Style:
     name: <text(20)>
     content: <realText(200)>
     style_section: '@style.section_*'
+    image: '274px-Bornemdubbel.jpg'
 
 App\Entity\Tag:
   tag_{1..15}:
@@ -27,7 +28,7 @@ App\Entity\Article:
     article_section: '@article.section_*'
     name: <text(40)>
     content: <realText(200)>
-    image: <url()>
+    image: 'beer-3786988_960_720.jpg'
     post_date: <dateTime()>
     views: <numberBetween(50,10000)>
     likes: <numberBetween(0,150)>
