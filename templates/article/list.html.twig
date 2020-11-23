@@ -78,15 +78,47 @@
     </div>
 </section>
 
-<nav class="pagination" aria-label="Последние новости">
+<nav class="pagination" aria-label="Пагинация">
     <ul class="pagination_list">
-        <li><a class="pagination_item" href="#">Первая</a></li>
-        <li><a class="pagination_item pagination_item_active" href="#">1</a></li>
-        <li><a class="pagination_item" href="#">2</a></li>
-        <li><a class="pagination_item" href="#">3</a></li>
-        <li><a class="pagination_item" href="#">4</a></li>
-        <li><a class="pagination_item" href="#">5</a></li>
-        <li><a class="pagination_item" href="#">Последняя</a></li>
+
+        {% if page != 1 %}
+
+            <li><a class="pagination_item" href="?page=1">Первая</a></li>
+
+        {% endif %}
+
+        {% if page - 2 > 0 %}
+
+            <li><a class="pagination_item" href="?page={{ page - 2 }}">{{ page - 2 }}</a></li>
+
+        {% endif %}
+
+        {% if page - 1 > 0 %}
+
+            <li><a class="pagination_item" href="?page={{ page - 1 }}">{{ page - 1 }}</a></li>
+
+        {% endif %}
+
+        <li><a class="pagination_item pagination_item_active" href="?page={{ page }}">{{ page }}</a></li>
+
+        {% if page + 1 <= total_pages %}
+
+            <li><a class="pagination_item" href="?page={{ page + 1 }}">{{ page + 1 }}</a></li>
+
+        {% endif %}
+
+        {% if page + 2 <= total_pages %}
+
+            <li><a class="pagination_item" href="?page={{ page + 2 }}">{{ page + 2 }}</a></li>
+
+        {% endif %}
+
+        {% if page != total_pages %}
+
+            <li><a class="pagination_item" href="?page={{ total_pages }}">Последняя</a></li>
+
+        {% endif %}
+
     </ul>
 </nav>
      
