@@ -69,18 +69,46 @@ class ArticleController extends  AbstractController
 
         $em = $this->getDoctrine()->getManager();
 
-        if($data == 'sortType=sort_alp_desc') {
+        if($data == 'sortType=sort_date_desc') {
             $articles = $em->getRepository('App:Article')
                 ->findBy(
                     array(),
                     array('post_date' => 'DESC')
                 );
         }
-        else if($data == 'sortType=sort_alp_asc') {
+        else if($data == 'sortType=sort_date_asc') {
             $articles = $em->getRepository('App:Article')
                 ->findBy(
                     array(),
                     array('post_date' => 'ASC')
+                );
+        }
+        else if($data == 'sortType=sort_views_desc') {
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('views' => 'DESC')
+                );
+        }
+        else if($data == 'sortType=sort_views_asc') {
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('views' => 'ASC')
+                );
+        }
+        else if($data == 'sortType=sort_likes_desc') {
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('likes' => 'DESC')
+                );
+        }
+        else if($data == 'sortType=sort_likes_asc') {
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('likes' => 'ASC')
                 );
         } else {
             $articles = $em->getRepository('App:Article')
