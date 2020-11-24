@@ -1,0 +1,24 @@
+{% for article in articles %}
+
+    <article class="content_news_item content_news_item_1">
+        <div class="row content_news_item_block">
+            <div class="col-md-3 content_news_item_img_block">
+                <a href="{{ path('article_show', {
+                    'name': article.name,
+                }) }}"><div class="content_news_item_img" style="background-image:url('{{asset('../img/' ~ article.image)}}')"></div></a>
+            </div>
+            <div class="col-md-9">
+                <p class="content_news_item_tags"><a href="#">Новости</a> - <a href="#">{{ article.getArticleSection().name }}</a></p>
+                <a href="{{ path('article_show', {
+                    'name': article.name,
+                }) }}" class="content_news_item_title">{{ article.name }}</a>
+                <p class="content_news_item_author">Автор: <a href="#">Админ</a></p>
+                <div class="content_news_item_subline">
+                    <span class="content_news_item_subline_date">{{ article.postDate|date('Y-m-d') }}</span>
+                    <span class="content_news_item_subline_activity"><span class="content_news_item_subline_activity_likes">{{ article.likes }}</span><span class="content_news_item_subline_activity_views">{{ article.views }}</span></span>
+                </div>
+            </div>
+        </div>
+    </article>
+
+{% endfor %}

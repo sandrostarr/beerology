@@ -38,11 +38,16 @@ class ArticleController extends  AbstractController
         $articles = $em->getRepository('App:Article')
             ->findBy(
                 array(),
-                array(),
-                $articles_per_page,
-                $shift
+                array('views' => 'DESC')
             );
 
+//        $articles = $em->getRepository('App:Article')
+//            ->findBy(
+//                array(),
+//                array(),
+//                $articles_per_page,
+//                $shift
+//            );
 
         return $this->render('article/list.html.twig', [
             'articles' => $articles,
@@ -50,6 +55,36 @@ class ArticleController extends  AbstractController
             'tags' => $tags,
             'page' => $page,
             'total_pages' => $total_pages,
+        ]);
+    }
+
+    /**
+     * @Route("/news-ajax-sort", name="news_ajax_sort")
+     * @param Request $request
+     * @return Response
+     */
+    public function ajaxActionAsc(Request $request)
+    {
+        $data = $request->getContent();
+
+        $em = $this->getDoctrine()->getManager();
+        $country = $em->getRepository('App:Country')
+            ->findAll();
+
+        if($data == 'sortType=sort_alp_desc') {
+            $country = $em->getRepository('App:Country')
+                ->findAllDesc();
+        }
+        else if($data == 'sortType=sort_alp_asc') {
+            $country = $em->getRepository('App:Country')
+                ->findAllAsc();
+        } else {
+            $country = $em->getRepository('App:Country')
+                ->findAll();
+        }
+
+        return $this->render('country/_sortlist.html.twig', [
+            'countries' => $country
         ]);
     }
 
