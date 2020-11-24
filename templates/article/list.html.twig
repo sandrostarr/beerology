@@ -22,8 +22,10 @@
             </div>
             <div class="col-lg-5 col-md-12">
                 <div class="page_sort">
-                    Сортировать: <a class="page_sort_active" href="#">по релевантности</a> / <a href="#">по популярности</a> / <a href="#">по дате</a>
+                    Сортировать: <a class="page_sort_type" id="sort_alp_asc" href="#">по алфавиту</a> / <a href="#">по релевантности</a> / <a href="#">по популярности</a> / <a href="#">по дате</a>
                 </div>
+
+
             </div>
         </div>
         <div class="row main">
@@ -100,3 +102,62 @@
 </nav>
      
  {% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+        $('.page_sort_type').on('click', function(e) {
+
+            let id = this.id;
+            $('.page_sort_type').removeClass('page_sort_active');
+            $(this).addClass('page_sort_active');
+
+            if($(this).attr("id") === "sort_alp_asc"){
+                $(this).attr("id", "sort_alp_desc");
+                $(this).html( "по алфавиту▼" );
+            } else{
+                $(this).attr("id", "sort_alp_asc");
+                $(this).html( "по алфавиту▲" );
+            }
+
+            e.preventDefault(); //Prevent Default action.
+
+            $.ajax({
+                url: "{{ path("news_ajax_sort") }}",
+                type: 'POST',
+                dataType: 'html',
+                // contentType: "application/json",
+                data: {
+                    'sortType': id
+                }
+            }).done(function (data) {
+                $('.content_news').html(data);
+            });
+        });
+
+        $('.page_search').on('keyup', function(e) {
+
+            let searchText = $(".page_search").val();
+
+            e.preventDefault(); //Prevent Default action.
+
+            $.ajax({
+                url: "{{ path("country_ajax_search") }}",
+                type: 'POST',
+                dataType: 'html',
+                // contentType: "application/json",
+                data: {
+                    'searchText': searchText
+                }
+            }).done(function (data) {
+                $('.content_countries').html(data);
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

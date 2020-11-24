@@ -68,23 +68,30 @@ class ArticleController extends  AbstractController
         $data = $request->getContent();
 
         $em = $this->getDoctrine()->getManager();
-        $country = $em->getRepository('App:Country')
-            ->findAll();
 
         if($data == 'sortType=sort_alp_desc') {
-            $country = $em->getRepository('App:Country')
-                ->findAllDesc();
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('post_date' => 'DESC')
+                );
         }
         else if($data == 'sortType=sort_alp_asc') {
-            $country = $em->getRepository('App:Country')
-                ->findAllAsc();
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('post_date' => 'ASC')
+                );
         } else {
-            $country = $em->getRepository('App:Country')
-                ->findAll();
+            $articles = $em->getRepository('App:Article')
+                ->findBy(
+                    array(),
+                    array('post_date' => 'DESC')
+                );
         }
 
-        return $this->render('country/_sortlist.html.twig', [
-            'countries' => $country
+        return $this->render('article/_sortlist.html.twig', [
+            'articles' => $articles
         ]);
     }
 
