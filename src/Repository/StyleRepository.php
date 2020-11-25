@@ -7,14 +7,11 @@ use Doctrine\ORM\EntityRepository;
 
 class StyleRepository extends EntityRepository
 {
-    public function findAllAsc()
+    public function sortBy($name, $sort)
     {
-        return $this->findBy(array(), array('name' => 'ASC'));
-    }
-
-    public function findAllDesc()
-    {
-        return $this->findBy(array(), array('name' => 'DESC'));
+        return $this->findBy(
+            array(),
+            array($name => $sort));
     }
 
     public function findAllLike($style)

@@ -60,11 +60,11 @@ class CountryController extends AbstractController
 
         if($data == 'sortType=sort_alp_desc') {
             $country = $em->getRepository('App:Country')
-                ->findAllDesc();
+                ->sortBy('name', 'DESC');
         }
         else if($data == 'sortType=sort_alp_asc') {
             $country = $em->getRepository('App:Country')
-                ->findAllAsc();
+                ->sortBy('name', 'ASC');
         } else {
             $country = $em->getRepository('App:Country')
                 ->findAll();

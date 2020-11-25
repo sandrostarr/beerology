@@ -52,11 +52,11 @@ class StyleController extends  AbstractController
 
         if($data == 'sortType=sort_alp_desc') {
             $style_sections = $em->getRepository('App:StyleSection')
-                ->findAllDesc();
+                ->sortBy('name', 'DESC');
         }
         else if($data == 'sortType=sort_alp_asc') {
             $style_sections = $em->getRepository('App:StyleSection')
-                ->findAllAsc();
+                ->sortBy('name', 'ASC');
         } else {
             $style_sections = $em->getRepository('App:StyleSection')
                 ->findAll();

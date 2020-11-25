@@ -71,45 +71,27 @@ class ArticleController extends  AbstractController
 
         if($data == 'sortType=sort_date_desc') {
             $articles = $em->getRepository('App:Article')
-                ->findBy(
-                    array(),
-                    array('post_date' => 'DESC')
-                );
+                ->sortBy('post_date', 'DESC');
         }
         else if($data == 'sortType=sort_date_asc') {
             $articles = $em->getRepository('App:Article')
-                ->findBy(
-                    array(),
-                    array('post_date' => 'ASC')
-                );
+                ->sortBy('post_date', 'ASC');
         }
         else if($data == 'sortType=sort_views_desc') {
             $articles = $em->getRepository('App:Article')
-                ->findBy(
-                    array(),
-                    array('views' => 'DESC')
-                );
+                ->sortBy('views', 'DESC');
         }
         else if($data == 'sortType=sort_views_asc') {
             $articles = $em->getRepository('App:Article')
-                ->findBy(
-                    array(),
-                    array('views' => 'ASC')
-                );
+                ->sortBy('views', 'ASC');
         }
         else if($data == 'sortType=sort_likes_desc') {
             $articles = $em->getRepository('App:Article')
-                ->findBy(
-                    array(),
-                    array('likes' => 'DESC')
-                );
+                ->sortBy('likes', 'DESC');
         }
         else if($data == 'sortType=sort_likes_asc') {
             $articles = $em->getRepository('App:Article')
-                ->findBy(
-                    array(),
-                    array('likes' => 'ASC')
-                );
+                ->sortBy('likes', 'ASC');
         } else {
             $articles = $em->getRepository('App:Article')
                 ->findBy(
