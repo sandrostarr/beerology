@@ -18,36 +18,25 @@ class ArticleController extends  AbstractController
      */
     public function listAction()
     {
-        if (isset($_GET['page'])){
-            $page = $_GET['page'];
-        }else $page = 1;
-
 
         $em = $this->getDoctrine()->getManager();
-        $articles_count = count($em->getRepository('App:Article')
-            ->findAll());
+        $articles = $em->getRepository('App:Article')
+            ->findAll();
         $article_sections = $em->getRepository('App:ArticleSection')
             ->findAll();
         $tags = $em->getRepository('App:ArticleSection')
             ->findAll();
 
+        if (isset($_GET['page'])){
+            $page = $_GET['page'];
+        }else $page = 1;
+
+        $articles_count = count($articles);
         $articles_per_page = 10;
         $total_pages = ceil($articles_count / $articles_per_page);
         $shift = $articles_per_page * ($page - 1);
 
-        $articles = $em->getRepository('App:Article')
-            ->findBy(
-                array(),
-                array('views' => 'DESC')
-            );
-
-//        $articles = $em->getRepository('App:Article')
-//            ->findBy(
-//                array(),
-//                array(),
-//                $articles_per_page,
-//                $shift
-//            );
+        $articles = array_slice($articles, $shift, $articles_per_page);
 
         return $this->render('article/list.html.twig', [
             'articles' => $articles,
@@ -55,6 +44,7 @@ class ArticleController extends  AbstractController
             'tags' => $tags,
             'page' => $page,
             'total_pages' => $total_pages,
+            'articles_count' => $articles_count,
         ]);
     }
 
@@ -100,8 +90,21 @@ class ArticleController extends  AbstractController
                 );
         }
 
+        if (isset($_GET['page'])){
+            $page = $_GET['page'];
+        }else $page = 1;
+
+        $articles_count = count($articles);
+        $articles_per_page = 10;
+        $total_pages = ceil($articles_count / $articles_per_page);
+        $shift = $articles_per_page * ($page - 1);
+
+        $articles = array_slice($articles, $shift, $articles_per_page);
+
         return $this->render('article/_sortlist.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            'page' => $page,
+            'total_pages' => $total_pages,
         ]);
     }
 
