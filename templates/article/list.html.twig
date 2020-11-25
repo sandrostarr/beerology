@@ -22,7 +22,7 @@
             </div>
             <div class="col-lg-5 col-md-12">
                 <div class="page_sort">
-                    Сортировать: <a class="page_sort_type" id="sort_date_asc" href="#">по дате</a> / <a class="page_sort_type" id="sort_likes_asc" href="#">по лайкам</a> / <a class="page_sort_type" id="sort_views_asc" href="#">по популярности</a>
+                    Сортировать: <a class="page_sort_type" id="sort_date_asc" href="#">по дате</a> / <a class="page_sort_type" id="sort_likes_asc" href="#">по популярности</a> / <a class="page_sort_type" id="sort_views_asc" href="#">по просмотрам</a>
                 </div>
 
 
@@ -157,7 +157,7 @@
             e.preventDefault(); //Prevent Default action.
 
             $.ajax({
-                url: "{{ path("country_ajax_search") }}",
+                url: "{{ path("news_ajax_search") }}",
                 type: 'POST',
                 dataType: 'html',
                 // contentType: "application/json",
@@ -165,7 +165,7 @@
                     'searchText': searchText
                 }
             }).done(function (data) {
-                $('.content_countries').html(data);
+                $('.content_news').html(data);
             });
 
         });

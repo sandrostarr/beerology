@@ -124,6 +124,29 @@ class ArticleController extends  AbstractController
     }
 
     /**
+     * @Route("/news-ajax-search", name="news_ajax_search")
+     * @param Request $request
+     * @return Response
+     */
+    public function ajaxActionDesc(Request $request)
+    {
+        $data = $request->getContent();
+
+        $search_result = explode('=', $data);
+        $search_result = $search_result[1];
+
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->getRepository('App:Article')
+            ->findAllLike($search_result);
+
+
+        return $this->render('article/_sortlist.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+
+    /**
      * @Route("/news/{name}", name="article_show")
      */
     public function showAction(Article $article)
