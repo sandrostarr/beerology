@@ -15,13 +15,13 @@ class WordSuffixTwig extends AbstractExtension
         ];
     }
 
-    public function formatSuffix($number)
+    public function formatSuffix($number, $page)
     {
         $number_mod = $number % 10;
 
         if ($number_mod == 1) {
             $modified_text = $number . ' статья';
-        } else if ($number_mod >= 2 && $number <= 4) {
+        } else if ($number_mod >= 2 && $number_mod <= 4) {
             $modified_text = $number . ' статьи';
         } else {
             $modified_text = $number . ' статей';
