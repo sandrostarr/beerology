@@ -20,15 +20,48 @@ class WordSuffixTwig extends AbstractExtension
         $number_mod = $number % 10;
 
         if ($number_mod == 1) {
-            $modified_text = $number . ' статья';
+            if($page == 'news'){
+                $modified_text = $number . ' статья';
+            }
+            if($page == 'countries'){
+                $modified_text = $number . ' страна';
+            }
+            if($page == 'styles'){
+                $modified_text = $number . ' стиль';
+            }
         } else if ($number_mod >= 2 && $number_mod <= 4) {
-            $modified_text = $number . ' статьи';
+            if($page == 'news') {
+                $modified_text = $number . ' статьи';
+            }
+            if($page == 'countries') {
+                $modified_text = $number . ' страны';
+            }
+            if($page == 'styles') {
+                $modified_text = $number . ' стиля';
+            }
         } else {
-            $modified_text = $number . ' статей';
+            if($page == 'news'){
+                $modified_text = $number . ' статей';
+            }
+            if($page == 'countries'){
+                $modified_text = $number . ' стран';
+            }
+            if($page == 'styles'){
+                $modified_text = $number . ' стилей';
+            }
         }
 
+
         if ($number >= 5 && $number <= 20) {
-            $modified_text = $number . ' статей';
+            if($page == 'news') {
+                $modified_text = $number . ' статей';
+            }
+            if($page == 'countries') {
+                $modified_text = $number . ' статей';
+            }
+            if($page == 'styles') {
+                $modified_text = $number . ' статей';
+            }
         }
 
         return $modified_text;
