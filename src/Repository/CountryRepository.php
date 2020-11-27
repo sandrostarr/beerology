@@ -11,12 +11,11 @@ class CountryRepository extends EntityRepository
     /**
      * @return Country[]
      */
-    public function findAllPublishedOrderedBySize()
+    public function findAllPublished()
     {
         return $this->createQueryBuilder('country')
-            ->andWhere('country.isPublished = :isPublished')
-            ->setParameter('isPublished', true)
-            ->orderBy('country.name', 'DESC')
+            ->andWhere('country.is_published = :is_published')
+            ->setParameter('is_published', true)
             ->getQuery()
             ->execute();
     }

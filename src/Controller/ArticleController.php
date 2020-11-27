@@ -21,7 +21,7 @@ class ArticleController extends  AbstractController
 
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('App:Article')
-            ->findAll();
+            ->findAllPublished();
         $article_sections = $em->getRepository('App:ArticleSection')
             ->findAll();
         $tags = $em->getRepository('App:ArticleSection')

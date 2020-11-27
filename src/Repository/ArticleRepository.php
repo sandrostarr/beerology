@@ -11,12 +11,11 @@ class ArticleRepository extends EntityRepository
     /**
      * @return Article[]
      */
-    public function findAllPublishedOrderedBySize()
+    public function findAllPublished()
     {
-        return $this->createQueryBuilder('country')
-            ->andWhere('country.isPublished = :isPublished')
-            ->setParameter('isPublished', true)
-            ->orderBy('country.name', 'DESC')
+        return $this->createQueryBuilder('article')
+            ->andWhere('article.is_published = :is_published')
+            ->setParameter('is_published', true)
             ->getQuery()
             ->execute();
     }

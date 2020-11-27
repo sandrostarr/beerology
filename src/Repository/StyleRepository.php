@@ -7,6 +7,18 @@ use Doctrine\ORM\EntityRepository;
 
 class StyleRepository extends EntityRepository
 {
+    /**
+     * @return Style[]
+     */
+    public function findAllPublished()
+    {
+        return $this->createQueryBuilder('style')
+            ->andWhere('style.is_published = :is_published')
+            ->setParameter('is_published', true)
+            ->getQuery()
+            ->execute();
+    }
+
     public function sortBy($name, $sort)
     {
         return $this->findBy(

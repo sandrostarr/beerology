@@ -27,7 +27,7 @@ class StyleController extends  AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $styles = $em->getRepository('App:Style')
-            ->findAll();
+            ->findAllPublished();
         $style_sections = $em->getRepository('App:StyleSection')
             ->findAll();
 

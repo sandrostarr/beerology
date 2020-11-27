@@ -38,7 +38,7 @@ class CountryController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('App:Country')
-            ->findAll();
+            ->findAllPublished();
 
         return $this->render('country/list.html.twig', [
             'countries' => $countries,
