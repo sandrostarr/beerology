@@ -3,7 +3,7 @@ App\Entity\Country:
     name: <country()>
     content: <realText(200)>
     image: 'denmark.jpg'
-    is_published: '1'
+    is_published: <boolean(75)>
 
 App\Entity\StyleSection:
   style.section_{1..10}:
@@ -15,7 +15,7 @@ App\Entity\Style:
     content: <realText(200)>
     style_section: '@style.section_*'
     image: '274px-Bornemdubbel.jpg'
-    is_published: '1'
+    is_published: <boolean(75)>
 
 App\Entity\Tag:
   tag_{1..15}:
@@ -31,7 +31,7 @@ App\Entity\Article:
     name: <text(40)>
     content: <realText(200)>
     image: 'beer-3786988_960_720.jpg'
-    is_published: '1'
+    is_published: <boolean(75)>
     post_date: <dateTime()>
     views: <numberBetween(50,10000)>
     likes: <numberBetween(0,150)>
