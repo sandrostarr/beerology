@@ -115,6 +115,13 @@ $(document).ready(function(){
         }
     });
 
+    // Выделение активного пункта в навигации разделов
+    $(function() {
+        let loc_path = $('.page_title').html();
+        if(loc_path) {
+            $('.sidebar_list a[href$="/news/section/' + encodeURI(loc_path)).addClass('sidebar_item_link_active');
+        }
+    });
 
     // for (let i = 1; i <= 3; i++) {
     //     var rate = document.getElementById("author_rate_" + i).innerHTML;
